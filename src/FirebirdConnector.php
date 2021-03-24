@@ -10,7 +10,8 @@ class FirebirdConnector extends Connector implements ConnectorInterface
     /**
      * Establish a database connection.
      *
-     * @param  array  $config
+     * @param array $config
+     *
      * @return \PDO
      */
     public function connect(array $config)
@@ -25,14 +26,15 @@ class FirebirdConnector extends Connector implements ConnectorInterface
     /**
      * Create a DSN string from the configuration.
      *
-     * @param  array   $config
+     * @param array $config
+     *
      * @return string
      */
     protected function getDsn(array $config)
     {
         extract($config);
 
-        if (! isset($host) || ! isset($database)) {
+        if (!isset($host) || !isset($database)) {
             trigger_error('Cannot connect to Firebird Database, no host or database supplied');
         }
 

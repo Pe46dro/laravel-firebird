@@ -21,8 +21,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile an aggregated select clause.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $aggregate
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param array                              $aggregate
+     *
      * @return string
      */
     protected function compileAggregate(Builder $query, $aggregate)
@@ -42,9 +43,10 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile SQL statement for get context variable value.
      *
-     * @param \Illuminate\Database\Query\Builder  $query
-     * @param string $namespace
-     * @param string $name
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param string                             $namespace
+     * @param string                             $name
+     *
      * @return string
      */
     public function compileGetContext(Builder $query, $namespace, $name)
@@ -55,9 +57,10 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile SQL statement for a stored procedure.
      *
-     * @param \Illuminate\Database\Query\Builder  $query
-     * @param string $procedure
-     * @param array $values
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param string                             $procedure
+     * @param array                              $values
+     *
      * @return string
      */
     public function compileProcedure(Builder $query, $procedure, array $values = null)
@@ -70,8 +73,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile the "limit" portions of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  int  $limit
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param int                                $limit
+     *
      * @return string
      */
     protected function compileLimit(Builder $query, $limit)
@@ -88,8 +92,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile the "offset" portions of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  int  $offset
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param int                                $offset
+     *
      * @return string
      */
     protected function compileOffset(Builder $query, $offset)
@@ -112,7 +117,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile the random statement into SQL.
      *
-     * @param  string  $seed
+     * @param string $seed
+     *
      * @return string
      */
     public function compileRandom($seed)
@@ -123,9 +129,10 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a date based where clause.
      *
-     * @param  string  $type
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $where
+     * @param string                             $type
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param array                              $where
+     *
      * @return string
      */
     protected function dateBasedWhere($type, Builder $query, $where)
@@ -138,8 +145,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a "where in" clause.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $where
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param array                              $where
+     *
      * @return string
      */
     protected function whereIn(Builder $query, $where)
@@ -160,8 +168,9 @@ class FirebirdGrammar extends Grammar
      * Compile a sliced where in query.
      *
      * @param \Illuminate\Database\Query\Builder $query
-     * @param array $where
-     * @param int $limit
+     * @param array                              $where
+     * @param int                                $limit
+     *
      * @return string
      */
     private function slicedWhereIn(Builder $query, $where, $limit)
@@ -184,8 +193,9 @@ class FirebirdGrammar extends Grammar
      * Slices the values portion of a $where array.
      *
      * @param array $where
-     * @param int $offset
-     * @param int $length
+     * @param int   $offset
+     * @param int   $length
+     *
      * @return array
      */
     private function sliceWhereValues($where, $offset, $length)
