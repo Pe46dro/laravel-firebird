@@ -17,7 +17,7 @@ class Connection extends DatabaseConnection
      */
     protected function getDefaultQueryGrammar()
     {
-        return new FirebirdQueryGrammar;
+        return new FirebirdQueryGrammar();
     }
 
     /**
@@ -41,7 +41,7 @@ class Connection extends DatabaseConnection
      */
     protected function getDefaultSchemaGrammar()
     {
-        return $this->withTablePrefix(new FirebirdSchemaGrammar);
+        return $this->withTablePrefix(new FirebirdSchemaGrammar());
     }
 
     /**
@@ -72,7 +72,7 @@ class Connection extends DatabaseConnection
      * Execute a stored procedure.
      *
      * @param string $procedure
-     * @param array $values
+     * @param array  $values
      *
      * @return \Illuminate\Support\Collection
      */

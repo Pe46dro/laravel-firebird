@@ -35,7 +35,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile the query to determine the list of columns.
      *
-     * @param  string  $table
+     * @param string $table
+     *
      * @return string
      */
     public function compileColumnListing($table)
@@ -47,8 +48,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a create table command.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $command
+     *
      * @return string
      */
     public function compileCreate(Blueprint $blueprint, Fluent $command)
@@ -73,8 +75,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a drop table command.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $command
+     *
      * @return string
      */
     public function compileDrop(Blueprint $blueprint, Fluent $command)
@@ -85,8 +88,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a column addition command.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $command
+     *
      * @return string
      */
     public function compileAdd(Blueprint $blueprint, Fluent $command)
@@ -101,8 +105,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a primary key command.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $command
+     *
      * @return string
      */
     public function compilePrimary(Blueprint $blueprint, Fluent $command)
@@ -115,8 +120,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a unique key command.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $command
+     *
      * @return string
      */
     public function compileUnique(Blueprint $blueprint, Fluent $command)
@@ -133,8 +139,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a plain index key command.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $command
+     *
      * @return string
      */
     public function compileIndex(Blueprint $blueprint, Fluent $command)
@@ -151,8 +158,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a foreign key command.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $command
+     *
      * @return string
      */
     public function compileForeign(Blueprint $blueprint, Fluent $command)
@@ -177,11 +185,11 @@ class FirebirdGrammar extends Grammar
         // Once we have the basic foreign key creation statement constructed we can
         // build out the syntax for what should happen on an update or delete of
         // the affected columns, which will get something like "cascade", etc.
-        if (! is_null($command->onDelete)) {
+        if (!is_null($command->onDelete)) {
             $sql .= " ON DELETE {$command->onDelete}";
         }
 
-        if (! is_null($command->onUpdate)) {
+        if (!is_null($command->onUpdate)) {
             $sql .= " ON UPDATE {$command->onUpdate}";
         }
 
@@ -191,8 +199,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Compile a drop foreign key command.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $command
+     *
      * @return string
      */
     public function compileDropForeign(Blueprint $blueprint, Fluent $command)
@@ -205,13 +214,14 @@ class FirebirdGrammar extends Grammar
     /**
      * Get the SQL for a character set column modifier.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $column
+     *
      * @return string|null
      */
     protected function modifyCharset(Blueprint $blueprint, Fluent $column)
     {
-        if (! is_null($column->charset)) {
+        if (!is_null($column->charset)) {
             return ' CHARACTER SET '.$column->charset;
         }
     }
@@ -219,13 +229,14 @@ class FirebirdGrammar extends Grammar
     /**
      * Get the SQL for a collation column modifier.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $column
+     *
      * @return string|null
      */
     protected function modifyCollate(Blueprint $blueprint, Fluent $column)
     {
-        if (! is_null($column->collation)) {
+        if (!is_null($column->collation)) {
             return ' COLLATE '.$column->collation;
         }
     }
@@ -233,8 +244,9 @@ class FirebirdGrammar extends Grammar
     /**
      * Get the SQL for a nullable column modifier.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $column
+     *
      * @return string|null
      */
     protected function modifyNullable(Blueprint $blueprint, Fluent $column)
@@ -245,13 +257,14 @@ class FirebirdGrammar extends Grammar
     /**
      * Get the SQL for a default column modifier.
      *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Database\Schema\Blueprint $blueprint
+     * @param \Illuminate\Support\Fluent            $column
+     *
      * @return string|null
      */
     protected function modifyDefault(Blueprint $blueprint, Fluent $column)
     {
-        if (! is_null($column->default)) {
+        if (!is_null($column->default)) {
             return ' DEFAULT '.$this->getDefaultValue($column->default);
         }
     }
@@ -259,7 +272,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a char type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeChar(Fluent $column)
@@ -270,7 +284,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a string type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeString(Fluent $column)
@@ -281,7 +296,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a text type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeText(Fluent $column)
@@ -292,7 +308,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a medium text type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeMediumText(Fluent $column)
@@ -303,7 +320,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a long text type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeLongText(Fluent $column)
@@ -314,7 +332,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a integer type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeInteger(Fluent $column)
@@ -325,7 +344,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a big integer type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeBigInteger(Fluent $column)
@@ -336,7 +356,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a medium integer type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeMediumInteger(Fluent $column)
@@ -347,7 +368,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a tiny integer type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeTinyInteger(Fluent $column)
@@ -358,7 +380,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a small integer type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeSmallInteger(Fluent $column)
@@ -369,7 +392,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a float type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeFloat(Fluent $column)
@@ -380,7 +404,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a double type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeDouble(Fluent $column)
@@ -391,7 +416,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a decimal type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeDecimal(Fluent $column)
@@ -402,7 +428,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a boolean type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeBoolean(Fluent $column)
@@ -413,7 +440,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for an enum type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeEnum(Fluent $column)
@@ -428,7 +456,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a json type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeJson(Fluent $column)
@@ -439,7 +468,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a jsonb type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeJsonb(Fluent $column)
@@ -450,7 +480,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a date type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeDate(Fluent $column)
@@ -461,7 +492,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a date-time type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeDateTime(Fluent $column)
@@ -472,7 +504,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a date-time type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeDateTimeTz(Fluent $column)
@@ -484,7 +517,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a time type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeTime(Fluent $column)
@@ -495,7 +529,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a time type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeTimeTz(Fluent $column)
@@ -507,7 +542,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a timestamp type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeTimestamp(Fluent $column)
@@ -522,7 +558,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a timestamp type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeTimestampTz(Fluent $column)
@@ -534,7 +571,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a binary type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeBinary(Fluent $column)
@@ -545,7 +583,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a uuid type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeUuid(Fluent $column)
@@ -556,7 +595,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for an IP address type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeIpAddress(Fluent $column)
@@ -567,7 +607,8 @@ class FirebirdGrammar extends Grammar
     /**
      * Create the column definition for a MAC address type.
      *
-     * @param  \Illuminate\Support\Fluent  $column
+     * @param \Illuminate\Support\Fluent $column
+     *
      * @return string
      */
     protected function typeMacAddress(Fluent $column)
